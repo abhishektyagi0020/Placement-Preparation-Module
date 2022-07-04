@@ -2,6 +2,7 @@
 // DAY 1 Main Problem 1 Contains Duplicate - 
 
 
+
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
@@ -32,8 +33,8 @@ public:
 };
 
 
-
-// PROBLEM 2 Maximum Subarray- LEET CODE
+ 
+// PROBLEM 2 Maximum Subarray- LEET CODE SOLUTIONS 
 
 
 class Solution
