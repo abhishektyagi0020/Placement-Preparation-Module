@@ -1,0 +1,53 @@
+// week-1--day-1-codechef-problems-algorithm-1--solutions // DAY 1 Main Problem 1 Contains Duplicate -
+
+class Solution { public: bool containsDuplicate(vector& nums) {
+
+    unordered_map<int,int>count;
+    for(auto j:nums)
+        if(++count[j]>1)return true;
+    return false;
+      /* for(int i=0; i<nums.size(); i++)
+     for(int j=i+1; j<nums.size() && j<=i+1; j++)
+     {
+         if(nums[j]==nums[i])
+             return true;
+     }
+    return false;
+     }
+int main()
+{
+vector<int> nums={1,2,3,1};
+int k=3;
+if(containsDuplicate(nums,k))
+    cout<<"true"<<endl;
+else
+    cout<<"false"<<endl;
+return 0;*/
+
+}
+};
+
+// PROBLEM 2 Maximum Subarray- LEET CODE SOLUTIONS
+
+class Solution {
+public:
+int maxSubArray(vector& nums)
+{
+if(nums.size()<0) return 0; 
+int run_sum=nums[0]; 
+int max_sum=nums[0]; 
+for(int i=1; i<nums.size(); i++)
+{   
+if(run_sum<0)
+{ 
+run_sum =0; 
+} 
+run_sum=run_sum+nums[i]; 
+if(run_sum>max_sum) 
+{
+max_sum=run_sum;
+}
+}
+return max_sum;
+} 
+};
