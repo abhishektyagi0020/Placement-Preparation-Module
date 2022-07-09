@@ -1,0 +1,46 @@
+// Remove Nth Node From End of List- leet code solutionc++.cpp abhishektyagi0020
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode*start =new ListNode();
+         start->next=head;
+        ListNode*fast=start;
+        ListNode*slow=start;
+        for(int i=1; i<=n;i++)
+            fast=fast->next;
+        while(fast->next !=NULL)
+        {
+        fast=fast->next;
+        slow=slow->next;
+        }
+        slow->next=slow->next->next;
+        return start->next;
+    }
+};
+
+
+
+
+//permutation string.cpp leetcode solution c++  abhishektyagi0020
+ class Solution {
+public:
+    bool checkInclusion(string s1, string s2) {
+        if(s1.size()>s2.size())
+            return false;
+            vector<int>f1(26,0),f2(26,0);
+       for(char c:s1)  f1[c-'a']++;
+        int k=s1.size();
+        
+        for(int i=0; i<k-1; i++)
+            f2[s2[i]-'a']++;
+        
+        for(int i=k-1; i<s2.size(); i++)
+        {
+        f2[s2[i]-'a']++;
+        if(f1==f2)
+            return true;
+            f2[s2[i-(k-1)]-'a']--;
+        }
+        return false;
+    }
+};
