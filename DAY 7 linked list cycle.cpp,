@@ -1,0 +1,81 @@
+//Problem 1  flood fill.cpp
+void floodFill2(vector<vector<int>>& image, int sr, int sc, int new_color, int old_color, int row_size, int col_size) {
+        
+        image[sr][sc] = new_color;
+        
+        //Fill the left cell, if it exists
+        if(sc > 0) {
+            if(image[sr][sc-1] == old_color) floodFill2(image, sr, sc-1, new_color, old_color, row_size, col_size);
+        }
+        
+        //Fill the right cell, if it exists
+        if(sc < col_size) {
+            if(image[sr][sc+1] == old_color) floodFill2(image, sr, sc+1, new_color, old_color, row_size, col_size);
+        }
+            
+        //Fill the above cell, if it exists
+        if(sr > 0) {
+            if(image[sr-1][sc] == old_color) floodFill2(image, sr-1, sc, new_color, old_color, row_size, col_size);
+        }
+            
+        //Fill the below cell, if it exists
+        if(sr < row_size) {
+            if(image[sr+1][sc] == old_color) floodFill2(image, sr+1, sc, new_color, old_color, row_size, col_size);
+        }
+    }
+    
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
+        if(image[sr][sc] == color) return image;
+        floodFill2(image, sr, sc, color, image[sr][sc], image.size()-1, image[0].size()-1);
+        return image;
+    }
+};
+
+//problem 2 max area of island.cpp
+class Solution {
+public:
+     
+    void DFS(vector<vector<int>>& grid, int i, int j, int num_rows, int num_cols, int& area) {
+        
+        area++;
+        grid[i][j] = 0;
+        
+        //Check whether the left cell (if it exists) is part of the island (i.e., is a 1)
+        if(j > 0) {
+            if(grid[i][j-1]) DFS(grid, i, j-1, num_rows, num_cols, area);
+        }
+        
+        //Check whether the right cell (if it exists) is part of the island (i.e., is a 1)
+        if(j < num_cols-1) {
+            if(grid[i][j+1]) DFS(grid, i, j+1, num_rows, num_cols, area);
+        }
+        
+        //Check whether the above cell (if it exists) is part of the island (i.e., is a 1)
+        if(i > 0) {
+            if(grid[i-1][j]) DFS(grid, i-1, j, num_rows, num_cols, area);
+        }               
+        
+        //Check whether the below cell (if it exists) is part of the island (i.e., is a 1)
+        if(i < num_rows-1) {
+            if(grid[i+1][j]) DFS(grid, i+1, j, num_rows, num_cols, area);
+        }        
+    }
+    
+    int maxAreaOfIsland(vector<vector<int>>& grid) {
+        
+        int num_rows = grid.size(), num_cols = grid[0].size(), max_area = 0, area;
+        
+        for(int i = 0; i < num_rows; i++) {
+            for(int j = 0; j < num_cols; j++) {
+                if(grid[i][j]) {
+                    area = 0;
+                    DFS(grid, i, j, num_rows, num_cols, area);
+                    if(area > max_area) max_area = area;
+                }
+            }
+        }
+        
+        return max_area;
+    }
+};
+
