@@ -1,3 +1,4 @@
 # PlacementPreparatonModule-week
 some leetcode solution 
-langauge for code -cpp
+language for code -cpp
+
