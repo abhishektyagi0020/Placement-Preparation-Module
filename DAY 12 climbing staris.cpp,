@@ -1,0 +1,53 @@
+//DAY 12 climbing staris.cpp, leetcode problem solutions
+
+class Solution {
+public:
+    int climbStairs(int n) {
+        int pre=1;
+        int curr=1;
+        int temp=0;
+        
+        for(int i=1; i<n; i++)
+        {
+            temp=curr;
+            curr=curr+pre;
+            pre=temp;
+        }
+        return curr;
+       
+    }
+};
+
+// problem 2 House rubber.cpp  //leetcode solutions
+
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        int n=nums.size();
+        if(n==0)
+            return 0;
+        if(n==1)
+            return nums[0];
+        int arr[n];
+        arr[0]=nums[0];
+        arr[1]=max(nums[0],nums[1]);
+        for(int i=2; i<n; i++)
+            arr[i]=max(nums[i]+arr[i-2],arr[i-1]);
+        return arr[n-1];
+    }
+};
+
+
+// triangle sum.cpp
+
+
+class Solution {
+public:
+    int minimumTotal(vector<vector<int>>& t) {
+   //  triangle==t;
+        for(int i=t.size()-2; ~i; i--)
+            for(int j= t[i].size()-1; ~j; j--)
+                t[i][j]  +=  min(t[i+1][j],t[i+1][j+1]);
+        return t[0][0];
+    }
+};
