@@ -15,3 +15,14 @@ public:
 };
 
 //problem 2 Single Number.cpp
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int xorsum=0;
+        for(int i=0;i<nums.size();i++)
+        {
+            xorsum = xorsum xor nums[i];
+        }
+        return xorsum;
+    }
+};
