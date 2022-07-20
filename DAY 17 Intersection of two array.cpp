@@ -51,5 +51,5 @@ public:
  //     /  for(int i=1;  i<prices.size(); i++)
        // ans=max(ans,prices[i]-exchange(temp,min(temp,prices[i])));
         return ans;
-    }
+    } 
 };
