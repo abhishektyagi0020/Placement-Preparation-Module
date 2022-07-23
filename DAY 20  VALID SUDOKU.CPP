@@ -1,0 +1,65 @@
+// VALID SUDOKIU.CPP  LEETCODE PROBLEM 
+class Solution {
+public:
+    bool valid(int i,int j,vector<vector<char>>& board){
+        unordered_set<char> temp;
+        for(int x=i;x<i+3;x++){
+            for(int y=j;y<j+3;y++){
+                if(board[x][y]!='.' and temp.count(board[x][y]))
+                    return false;
+                temp.insert(board[x][y]);
+            }
+        }
+        return true;
+    }
+    bool isValidSudoku(vector<vector<char>>& board) {
+        for(int i=0;i<9;i+=3){
+            for(int j=0;j<9;j+=3)
+                if(!valid(i,j,board))
+                    return false;
+        }
+        unordered_set<char> temp;
+        for(int i=0;i<9;i++){
+            temp.clear();
+            for(int j=0;j<9;j++){
+                if(board[i][j]!='.' and temp.count(board[i][j]))
+                    return false;
+                temp.insert(board[i][j]);
+            }
+        }
+        for(int j=0;j<9;j++){
+            temp.clear();
+            for(int i=0;i<9;i++){
+                if(board[i][j]!='.' and temp.count(board[i][j]))
+                    return false;
+                temp.insert(board[i][j]);
+            }
+        }
+        return true;
+    }
+};
+
+
+// SEARCH 2D MATRIX.CPP
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int low= 0;
+        if(!matrix.size()) return false;
+        int high = (matrix.size() * matrix[0].size()) - 1;
+        
+        while(low <= high) {
+            int mid = (low + (high - low) / 2);
+            if(matrix[mid/matrix[0].size()][mid % matrix[0].size()] == target) {
+                return true;
+            }
+            if(matrix[mid/matrix[0].size()][mid % matrix[0].size()] < target) {
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+        return false;
+    }
+};
