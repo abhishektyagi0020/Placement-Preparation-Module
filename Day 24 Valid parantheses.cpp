@@ -19,7 +19,7 @@ public:
     }
 }
 
-//***problem 1 Implement Queue using stack.cpp///
+//***problem 2 Implement Queue using stack.cpp///
 class MyQueue {
 public:
    stack<int>st;
