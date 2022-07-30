@@ -1,0 +1,15 @@
+// PROBLEM 1 INVERT BINARY TREE.CPP
+
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+     if(root==NULL) // check root node is null value then return null else swap left to right
+         return NULL;
+        swap(root->left,root->right); swap each other 
+        invertTree(root->left);
+        invertTree(root->right);
+        return root;
+    }
+};
+
+//PROBLEM 2 PATH SUM.CPP
