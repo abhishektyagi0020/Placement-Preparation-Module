@@ -14,3 +14,31 @@ public:
 
 //PROBLEM 2 PATH SUM.CPP
  
+
+class Solution {
+public:
+    bool ans=false;
+    bool hasPathSum(TreeNode* root, int target)
+    {
+        DFS (root,target, 0);
+            return ans;
+    }
+void DFS(TreeNode* root,int target,int csum)
+    
+{
+    if(root==NULL)
+    return;
+    
+if(root->right==NULL&& root ->left==NULL)
+{
+    csum+=root->val;
+if(csum==target)
+    ans=true;
+return;
+}
+csum+=root->val;
+DFS(root->left,target,csum);
+DFS(root->right,target,csum);
+        
+    }
+};
