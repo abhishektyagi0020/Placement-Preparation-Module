@@ -22,3 +22,21 @@ public:
  
  
  // leetcode problem 2.cpp
+ Insert into a Binary Search Tree
+
+
+class Solution {
+public:
+    TreeNode* insertIntoBST(TreeNode* &root, int &val) {
+      if(!root)
+      {
+          root=new TreeNode(val);
+          return root;
+      }
+        if(val<root->val)
+            insertIntoBST(root->left,val);
+        else
+            insertIntoBST(root->right,val);
+        return root;
+    }
+};
